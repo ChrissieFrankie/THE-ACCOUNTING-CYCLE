@@ -15,3 +15,10 @@ int main(void)
   return 0;
 
 }
+
+/** TO DO
+ * prompt the user for the 9 steps
+ * shuffle steps
+ * prompt user to reorder the 9 steps
+ * ^-^
+ **/
