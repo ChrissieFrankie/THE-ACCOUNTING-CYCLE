@@ -2,16 +2,18 @@
 
 int main(void)
 {
-  std::cout << "The Accounting Cycle (Wiley)" << std::endl;
-  std::cout << "Analyze business transactions" << std::endl;
-  std::cout << "Journalize the transactions" << std::endl;
-  std::cout << "Post to ledger accounts" << std::endl;
-  std::cout << "Prepare a trial balance" << std::endl;
-  std::cout << "Journalize and post adjusting entries" << std::endl;
-  std::cout << "Prepare an adjusted trial balance" << std::endl;
-  std::cout << "Prepare financial statements" << std::endl;
-  std::cout << "Journalize and post closing entries" << std::endl;
-  std::cout << "Prepare a postclosing trial balance" << std::endl;
+  using std::cout;
+  using std::endl;
+  cout << "The Accounting Cycle (Wiley)" << endl;
+  cout << "Analyze business transactions" << endl;
+  cout << "Journalize the transactions" << endl;
+  cout << "Post to ledger accounts" << endl;
+  cout << "Prepare a trial balance" << endl;
+  cout << "Journalize and post adjusting entries" << endl;
+  cout << "Prepare an adjusted trial balance" << endl;
+  cout << "Prepare financial statements" << endl;
+  cout << "Journalize and post closing entries" << endl;
+  cout << "Prepare a postclosing trial balance" << endl;
   return 0;
 
 }
