@@ -2,12 +2,16 @@
 #include <vector>
 #include <cstdlib>
 
-void printSteps(const std::vector<std::string> &steps)
+void printCycle(const std::vector<std::string> &steps, const char upto)
 {
   using std::cout;
   using std::endl;
   for (size_t i = 0; i < steps.size(); i++)
   {
+    if (i == upto)
+    {
+      break;
+    }
     cout << steps[i] << endl;
   }
 }
@@ -20,16 +24,41 @@ void clearTerminal() {
 #endif
 }
 
+
 void promptSteps(const std::vector<std::string> &steps)
 {
   using std::cin;
   using std::cout;
   using std::string;
-  string entry;
+  using std::endl;
 
+  cout << endl << "Press ENTER to be prompted each step . . ." << endl;
+
+  string entry;
   std::getline(std::cin, entry);
+
   clearTerminal();
-  cout << entry;
+
+  for (size_t i = 0; i < steps.size(); i++)
+  {
+    cout << i + 1 << ": ";
+    string step = steps[i];
+    std::getline(std::cin, entry);
+
+    if (step == entry)
+    {
+      cout << "Uncle Sam is proud!\n";
+    }
+    else
+    {
+      cout << "Uncle Sam is pissed! Expected '" << step << "'\n";
+      cout << "Press ENTER to not give up on Uncle Sam!" << endl;
+      std::getline(cin, entry);
+      clearTerminal();
+      printCycle(steps, i);
+      i--;
+    }
+  }
 }
 
 int main(void)
@@ -50,20 +79,16 @@ int main(void)
     "Journalize and post closing entries", 
     "Prepare a postclosing trial balance" 
   };
+  clearTerminal();
 
   cout << "The Accounting Cycle (Wiley)" << endl;
-  printSteps(steps);
-
-  cout << endl << "Press ENTER to be prompted each step . . ." << endl;
+  printCycle(steps, 9);
   promptSteps(steps);
-  
 
   return 0;
-
 }
 
 /** TO DO
- * prompt the user for the 9 steps
  * shuffle steps
  * prompt user to reorder the 9 steps
  * ^-^
