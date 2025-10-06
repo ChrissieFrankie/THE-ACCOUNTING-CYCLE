@@ -2,6 +2,27 @@
 #include <vector>
 #include <cstdlib>
 
+void uncleSamIsWatching(void)
+{
+  using std::cout;
+  using std::endl;
+
+  cout << R"(
+       _..._
+      |||||||
+      |||||||
+     _|*****|_
+    ( '-...-' )
+    {`;-----;`}
+    {(| a  a|)}
+     \|  _\ |/
+      \  -  /
+       '{_}`
+    )" << endl;
+
+  cout << "Uncle Sam is watching...\n";
+}
+
 void printCycle(const std::vector<std::string> &steps, const char upto)
 {
   using std::cout;
@@ -84,6 +105,7 @@ int main(void)
   cout << "The Accounting Cycle (Wiley)" << endl;
   printCycle(steps, 9);
   promptSteps(steps);
+  uncleSamIsWatching();
 
   return 0;
 }
