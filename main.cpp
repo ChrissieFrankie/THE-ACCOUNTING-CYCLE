@@ -1,19 +1,27 @@
 #include <iostream>
+#include <vector>
 
 int main(void)
 {
+  using std::string;
   using std::cout;
   using std::endl;
+  using std::vector;
+
+  vector<string> steps = { 
+    "Analyze business transactions", 
+    "Journalize the transactions",
+    "Post to ledger accounts",
+    "Prepare a trial balance",
+    "Journalize and post adjusting entries", 
+    "Prepare an adjusted trial balance", 
+    "Prepare financial statements",
+    "Journalize and post closing entries", 
+    "Prepare a postclosing trial balance" 
+  };
+
   cout << "The Accounting Cycle (Wiley)" << endl;
-  cout << "Analyze business transactions" << endl;
-  cout << "Journalize the transactions" << endl;
-  cout << "Post to ledger accounts" << endl;
-  cout << "Prepare a trial balance" << endl;
-  cout << "Journalize and post adjusting entries" << endl;
-  cout << "Prepare an adjusted trial balance" << endl;
-  cout << "Prepare financial statements" << endl;
-  cout << "Journalize and post closing entries" << endl;
-  cout << "Prepare a postclosing trial balance" << endl;
+
   return 0;
 
 }
