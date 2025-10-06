@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 void printSteps(const std::vector<std::string> &steps)
 {
@@ -11,6 +12,14 @@ void printSteps(const std::vector<std::string> &steps)
   }
 }
 
+void clearTerminal() {
+#ifdef _WIN32
+  system("cls");  // Windows
+#else
+  system("clear");  // Unix/Linux/macOS
+#endif
+}
+
 void promptSteps(const std::vector<std::string> &steps)
 {
   using std::cin;
@@ -19,6 +28,7 @@ void promptSteps(const std::vector<std::string> &steps)
   string entry;
 
   std::getline(std::cin, entry);
+  clearTerminal();
   cout << entry;
 }
 
@@ -46,6 +56,7 @@ int main(void)
 
   cout << endl << "Press ENTER to be prompted each step . . ." << endl;
   promptSteps(steps);
+  
 
   return 0;
 
