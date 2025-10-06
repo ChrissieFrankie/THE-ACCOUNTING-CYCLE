@@ -1,6 +1,16 @@
 #include <iostream>
 #include <vector>
 
+void printSteps(const std::vector<std::string> &steps)
+{
+  using std::cout;
+  using std::endl;
+  for (size_t i = 0; i < steps.size(); i++)
+  {
+    cout << steps[i] << endl;
+  }
+}
+
 int main(void)
 {
   using std::string;
@@ -21,6 +31,7 @@ int main(void)
   };
 
   cout << "The Accounting Cycle (Wiley)" << endl;
+  printSteps(steps);
 
   return 0;
 
