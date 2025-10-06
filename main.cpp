@@ -11,6 +11,17 @@ void printSteps(const std::vector<std::string> &steps)
   }
 }
 
+void promptSteps(const std::vector<std::string> &steps)
+{
+  using std::cin;
+  using std::cout;
+  using std::string;
+  string entry;
+
+  std::getline(std::cin, entry);
+  cout << entry;
+}
+
 int main(void)
 {
   using std::string;
@@ -32,6 +43,9 @@ int main(void)
 
   cout << "The Accounting Cycle (Wiley)" << endl;
   printSteps(steps);
+
+  cout << endl << "Press ENTER to be prompted each step . . ." << endl;
+  promptSteps(steps);
 
   return 0;
 
