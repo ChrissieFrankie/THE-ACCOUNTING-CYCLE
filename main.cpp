@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <random>
 
 void uncleSamIsWatching(void)
 {
@@ -82,6 +83,73 @@ void promptSteps(const std::vector<std::string> &steps)
   }
 }
 
+void promptReorderSteps(const std::vector<std::string> &steps)
+{
+  using std::cout;
+  using std::endl;
+  using std::cin;
+
+  std::vector<std::string> shuffled = steps;
+  std::shuffle(shuffled.begin(), shuffled.end(), std::mt19937(std::random_device{}())); 
+
+  bool selected = true;
+  size_t selection = 0;
+
+  while (true) {
+
+    clearTerminal();
+
+    cout << "Uncle Sam wants you to fix the order!" << endl; 
+    cout << "Use Q to select/deselect, W/S to move up/down, and ENTER to submit!" << endl;
+    cout << endl;
+
+    if (shuffled == steps)
+    {
+      printCycle(shuffled, 9);
+      cout << endl << "You've made Uncle Sam proud!" << endl;
+      break;
+    }
+
+    for (size_t i = 0; i < shuffled.size(); i++)
+    {
+      cout << ((selection == i) ? (selected ? "[" : "|") : "") << shuffled[i] << ((selection == i) ? (selected ? "]" : "|") : "") << endl;
+    }
+
+    char in = ' ';
+    cin >> in;
+
+    switch (in)
+    {
+      case 'Q':
+        selected = !selected;
+        break;
+      case 'S':
+        selection = (selection + 1) % 9;
+        if (selected)
+        {
+          auto oldSelection = ((selection - 1) + 9) % 9;
+          std::string temp = shuffled[oldSelection];
+          shuffled[oldSelection] = shuffled[selection];
+          shuffled[selection] = temp; 
+        }
+        break;
+      case 'W':
+        selection = ((selection - 1) + 9) % 9;
+        if (selected)
+        {
+          auto oldSelection = (selection + 1) % 9;
+          std::string temp = shuffled[oldSelection];
+          shuffled[oldSelection] = shuffled[selection];
+          shuffled[selection] = temp; 
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+}
+
 int main(void)
 {
   using std::string;
@@ -103,15 +171,14 @@ int main(void)
   clearTerminal();
 
   cout << "The Accounting Cycle (Wiley)" << endl;
-  printCycle(steps, 9);
-  promptSteps(steps);
+  //  printCycle(steps, 9);
+  //  promptSteps(steps);
+  promptReorderSteps(steps);
   uncleSamIsWatching();
 
   return 0;
 }
 
 /** TO DO
- * shuffle steps
- * prompt user to reorder the 9 steps
  * ^-^
  **/
